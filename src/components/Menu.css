@@ -1,0 +1,258 @@
+/* ============================================
+   MENU
+   ============================================ */
+
+.menu {
+  background: var(--bg-tertiary);
+  position: relative;
+}
+
+/* ---------- Filters ---------- */
+.menu__filters {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.menu__filter-btn {
+  padding: 0.55rem 1.25rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  border-radius: 50px;
+  transition: all var(--transition-base);
+  white-space: nowrap;
+}
+
+.menu__filter-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--border-medium);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.menu__filter-btn--active {
+  color: #0a0a0a;
+  background: var(--accent-gradient);
+  border-color: transparent;
+  font-weight: 600;
+}
+
+.menu__filter-btn--active:hover {
+  color: #0a0a0a;
+  box-shadow: 0 4px 20px rgba(212, 116, 15, 0.3);
+}
+
+/* ---------- Grid ---------- */
+.menu__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+/* ---------- Card ---------- */
+.menu__card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  transition: transform var(--transition-base),
+              box-shadow var(--transition-base),
+              border-color var(--transition-base);
+  animation: fadeInUp 0.5s ease both;
+}
+
+.menu__card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+  border-color: var(--border-medium);
+}
+
+/* Card Image */
+.menu__card-image {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+}
+
+.menu__card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.menu__card:hover .menu__card-image img {
+  transform: scale(1.08);
+}
+
+.menu__card-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 50%,
+    rgba(10, 10, 10, 0.6) 100%
+  );
+  pointer-events: none;
+}
+
+/* Tag Badge */
+.menu__card-tag {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.65rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 50px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.menu__card-tag--popular {
+  background: rgba(212, 116, 15, 0.85);
+  color: #0a0a0a;
+}
+
+.menu__card-tag--signature {
+  background: rgba(232, 168, 56, 0.9);
+  color: #0a0a0a;
+}
+
+.menu__card-tag--chefspick {
+  background: rgba(196, 94, 26, 0.85);
+  color: #fff;
+}
+
+.menu__card-tag--veg {
+  background: rgba(76, 145, 65, 0.85);
+  color: #fff;
+}
+
+.menu__card-tag--keralaclassic {
+  background: rgba(180, 80, 40, 0.85);
+  color: #fff;
+}
+
+.menu__card-tag--seasonal {
+  background: rgba(120, 90, 160, 0.85);
+  color: #fff;
+}
+
+/* Card Body */
+.menu__card-body {
+  padding: 1.25rem 1.35rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.menu__card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.menu__card-name {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.menu__card-price {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent-secondary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.menu__card-desc {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.menu__card-category {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  opacity: 0.6;
+  margin-top: auto;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* ---------- Empty State ---------- */
+.menu__empty {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  padding: 3rem 0;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  .menu__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .menu__grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .menu__filters {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 0.75rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .menu__filters::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ---------- Reduced Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .menu__card {
+    animation: none;
+    opacity: 1;
+  }
+
+  .menu__card:hover {
+    transform: none;
+  }
+
+  .menu__card-image img {
+    transition: none;
+  }
+}

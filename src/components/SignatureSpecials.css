@@ -1,0 +1,203 @@
+/* ============================================
+   SIGNATURE SPECIALS
+   ============================================ */
+
+.signatures {
+  background: var(--bg-primary);
+  position: relative;
+}
+
+/* Subtle top border glow */
+.signatures::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 1px;
+  background: var(--accent-gradient);
+  opacity: 0.4;
+}
+
+/* ---------- List ---------- */
+.signatures__list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4rem, 8vw, 7rem);
+}
+
+/* ---------- Item Row ---------- */
+.signatures__item {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+}
+
+.signatures__item--reverse {
+  grid-template-columns: 1fr 1.1fr;
+}
+
+.signatures__item--reverse .signatures__image-wrap {
+  order: 2;
+}
+
+.signatures__item--reverse .signatures__content {
+  order: 1;
+}
+
+/* ---------- Image ---------- */
+.signatures__image-wrap {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.signatures__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.signatures__image-wrap:hover .signatures__image {
+  transform: scale(1.05);
+}
+
+.signatures__image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(212, 116, 15, 0.08) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+/* Large decorative number */
+.signatures__number {
+  position: absolute;
+  top: 1rem;
+  left: 1.25rem;
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--text-primary);
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+/* ---------- Content ---------- */
+.signatures__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.signatures__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.signatures__star {
+  color: var(--accent-secondary);
+}
+
+.signatures__subtitle {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+}
+
+.signatures__name {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--text-primary);
+}
+
+.signatures__description {
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  line-height: 1.85;
+  color: var(--text-secondary);
+}
+
+.signatures__footer {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.signatures__price {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--accent-secondary);
+}
+
+.signatures__price svg {
+  color: var(--accent-primary);
+  opacity: 0.6;
+}
+
+.signatures__btn {
+  font-size: 0.75rem;
+  padding: 0.6rem 1.25rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .signatures__item,
+  .signatures__item--reverse {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .signatures__item--reverse .signatures__image-wrap {
+    order: 0;
+  }
+
+  .signatures__item--reverse .signatures__content {
+    order: 0;
+  }
+
+  .signatures__image-wrap {
+    max-width: 550px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .signatures__footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .signatures__btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ---------- Reduced Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .signatures__image {
+    transition: none;
+  }
+}

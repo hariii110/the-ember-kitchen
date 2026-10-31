@@ -1,0 +1,86 @@
+/* ============================================
+   INSTAGRAM
+   ============================================ */
+
+.instagram {
+  background: var(--bg-primary);
+}
+
+/* ---------- Grid ---------- */
+.instagram__grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  margin-bottom: 2.5rem;
+}
+
+/* ---------- Item ---------- */
+.instagram__item {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: block;
+}
+
+.instagram__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.instagram__item:hover img {
+  transform: scale(1.1);
+}
+
+/* Overlay */
+.instagram__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 8, 6, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  color: var(--text-primary);
+}
+
+.instagram__item:hover .instagram__overlay {
+  opacity: 1;
+}
+
+/* ---------- CTA ---------- */
+.instagram__cta {
+  display: inline-flex;
+  margin: 0 auto;
+}
+
+/* Center the button */
+.instagram .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 700px) {
+  .instagram__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 420px) {
+  .instagram__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+}
+
+/* ---------- Reduced Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .instagram__item img {
+    transition: none;
+  }
+}
